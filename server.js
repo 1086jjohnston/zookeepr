@@ -40,7 +40,7 @@ function filterByQuery(query, animalsArray) {
   }
   // return the filtered results:
   return filteredResults;
-}
+};
 
 app.get('/api/animals', (req, res) => {
     let results = animals;
@@ -51,4 +51,9 @@ app.get('/api/animals', (req, res) => {
   });
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
+});
+
+app.get('/api/animals/:id', (req, res) => {
+  const result = findById(req.params.id, animals);
+  res.json(result);
 });
